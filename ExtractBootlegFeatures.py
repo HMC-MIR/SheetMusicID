@@ -67,6 +67,12 @@ dtw_steps = [
  1, 1, 1, 2, 2, 1]
 dtw_weights = [1, 1, 2]
 
+
+
+def openImage(imagefile):
+    cvim = cv2.imread(imagefile,cv2.IMREAD_GRAYSCALE)
+    return Image.fromarray(cvim)
+
 def removeBkgdLighting(pimg, filtsz=5, thumbnailW=100, thumbnailH=100):
     tinyimg = pimg.copy()
     tinyimg.thumbnail([thumbnailW, thumbnailH])
@@ -843,9 +849,9 @@ def processQuery(imagefile):
     thumbnailH = 100
     thumbnailFilterSize = 5
     estLineSep_NumCols = 3
-    estLineSep_LowerRange = 25
-    estLineSep_UpperRange = 45
-    estLineSep_Delta = 1
+    estLineSep_LowerRange = 24
+    estLineSep_UpperRange = 48
+    estLineSep_Delta = 4
     targetLineSep = 10.0
     morphFilterHorizLineSize = 41
     notebarFiltLen = 3
@@ -883,14 +889,14 @@ def processQuery(imagefile):
     dtw_weights = [1, 1, 2]
     print('Processing {}'.format(imagefile))
     profileStart = time.time()
-    pim1 = Image.open(imagefile).convert('L')
+    pim1 = openImage(imagefile)
     pim2 = removeBkgdLighting(pim1, thumbnailFilterSize, thumbnailW, thumbnailH)
-    linesep, scores = estimateLineSep(pim2, estLineSep_NumCols, estLineSep_LowerRange, estLineSep_UpperRange, estLineSep_Delta)
-    targetH, targetW = calcResizedDimensions(pim2, linesep, targetLineSep)
+    linesep, scores = estimateLineSep(pim1, estLineSep_NumCols, estLineSep_LowerRange, estLineSep_UpperRange, estLineSep_Delta)
+    targetH, targetW = calcResizedDimensions(pim1, linesep, targetLineSep)
     if targetW:
         if targetH == 0:
             return np.zeros((62, 1))
-    pim2 = pim2.resize((targetW, targetH))
+    pim2 = cv2.resize(np.array(pim2),(targetW, targetH))
     X2 = getNormImage(pim2)
     hlines = isolateStaffLines(X2, morphFilterHorizLineSize, notebarFiltLen, notebarRemoval)
     featmap, stavelens, columnWidth = computeStaveFeatureMap(hlines, calcStaveFeatureMap_NumCols, calcStaveFeatureMap_LowerRange, calcStaveFeatureMap_UpperRange, calcStaveFeatureMap_Delta)

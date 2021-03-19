@@ -1,1 +1,7 @@
 bootleg_total/*
+data/*
+experiments/*
+.*
+!/.gitignore
+.ipynb_checkpoints/*
+*.pyc
