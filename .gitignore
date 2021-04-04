@@ -4,3 +4,8 @@ experiments/*
 .*
 .ipynb_checkpoints/*
 *.pyc
+analyze_databases.ipynb
+memory_investigation.ipynb
+fil-result/*
+fp_distribution.png
+
