@@ -9,3 +9,5 @@ You can find the paper [here](http://pages.hmc.edu/ttsai/assets/SheetMusicID_ism
 ## Citation
 
 Daniel Yang and TJ Tsai. "Camera-Based Piano Sheet Music Identification" in Proceedings of the International Society for Music Information Retrieval Conference, 2020.
+
+Daniel Yang and TJ Tsai. "Piano Sheet Music Identification Using Dynamic N-gram Fingerprinting" in Transactions of the International Society for Music Information Retrieval, 4(1): 42-51, 2021.
