@@ -6,7 +6,7 @@ The goal of this project is to identify a page of piano sheet music given a cell
 
 You can find the ISMIR paper [here](https://drive.google.com/file/d/19fmXoQw6Uj6ImZVdmBbZu7cXUFHyBvsj/view?usp=sharing).
 
-You can find the extended TISMIR article [here](https://drive.google.com/file/d/1A1VlY4WJYefDFdHWI0ORcLHT4GAnr3au/view?usp=sharing).
+You can find the extended TISMIR article [here](https://transactions.ismir.net/articles/10.5334/tismir.70/).
 
 ## Citation
 
